@@ -1,0 +1,30 @@
+Input/Output Stream Class Hierarchy 
+                    +-------------------+
+                    |      ios_base     |  (Manages format flags, state, status)
+                    +-------------------+
+                              |
+                    +-------------------+
+                    |        ios        |  (Tied to a stream buffer)
+                    +-------------------+
+                     /                 \
+        +-----------------+       +-----------------+
+        |     istream     |       |     ostream     |  (Handles output)
+        +-----------------+       +-----------------+
+         /       |       \         /       |       \
++---------+ +---------+  +---------+  +---------+ +---------+
+| ifstream| |istringstream| \   /     | ofstream| |ostringstream|
++---------+ +---------+       v        +---------+ +---------+
+                         +---------+
+                         | iostream|  (Handles both input and output)
+                         +---------+
+                              |
+                         +---------+
+                         |  fstream| / +--------------+
+                         +---------+   | stringstream |
+                                       +--------------+
+
+C++ streams maintain a state mask using four internal
+ state bits—goodbit, eofbit, failbit, and badbit—to track the success or failure of I/O operations.
+  The stream status can be checked directly using operator bool, and unrecoverable or 
+  logical errors like failbit can be cleared and recovered from using methods such as clear() and ignore().
+   More information is available on the source platform.

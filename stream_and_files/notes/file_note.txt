@@ -1,0 +1,32 @@
+Core File Modes in C++
+File Mode Flag:
+std::ios::in-->Opens the file for reading (input operations). 
+               The file must exist, or the operation fails.
+std::ios::out-->opens the file for writing(if file exitst then it overwrite)or,
+                if create a new file for writing if file doesnot exists
+std::ios::app-->opens the file in the appends modes.(does not over write add the content in the last)
+std::ios::binary-->opens the file for the binary mode
+std::ios::trunc-->if there are any content in file all the content are earsed to 0 btyes and open in 
+                   "turncated mode"
+std::ios::ate--->"At the end" mode.
+                   Opens the file and immediately moves the read/write pointer to the end. 
+                   Unlike app, you can still move the pointer (seekg/seekp) to modify data anywhere.
+
+
+Common Methods for Testing Error States 
+is_open(): Returns true if the file was successfully associated with the stream.
+           Use this immediately after calling .open().
+fail(): Returns true if a non-fatal error or a formatting mismatch occurred (e.g., trying to read an integer but encountering text).
+        It also returns true if the file failed to open.
+bad(): Returns true if a fatal, unrecoverable I/O error occurred (e.g., physical disk failure, missing permissions, or buffer corruption).
+eof(): Returns true if you have attempted to read past the End-of-File 
+
+
+binary file vs ascii file
+
+encoding   |in binary file the character are encoded in raw binary format | in ascii file the character are strictly encoded in the ASCII or UTF-8 format|
+readbility |the binary file are in non_human readable format              | in ascci file the the data are sotre in human readble format and can easily be open in the text editors|
+storage    |the storage effiencey is high                                 | The storage efficency is low
+example    |.json .txt .csv .cpp                                          | .png .bin .dat .pdf
+
+
