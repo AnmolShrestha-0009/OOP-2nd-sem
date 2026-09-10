@@ -1,0 +1,46 @@
+Type Conversion:
+
+from basic to user defined:
+------>making a parameterized constructor
+
+
+
+from user defined to basic:
+------>by defining a overloaded conversion(casting) operator.
+
+
+from user defined to user defined:
+--> making a parameterized constructor
+or 
+---> by defining a overloaded conversion(casting) operator.
+
+
+Explicit Constructor
+explicit constructor is a class constructor in programming (primarily C++) that you mark with the explicit keyword to block the compiler from using it for automatic, unintended type conversions. 
+class Distance {
+public:
+    int meters;
+
+    // Explicit constructor
+    explicit Distance(int m) {
+        meters = m;
+    }
+};
+
+void displayDistance(Distance d) {
+    // ...
+}
+
+int main() {
+    // Correct: direct initialization
+    Distance d1(50); 
+
+    // Error: cannot implicitly convert int (100) to a Distance object
+    // displayDistance(100); 
+
+    // Correct: explicit conversion requested by the programmer
+    displayDistance(Distance(100)); 
+
+    return 0;
+}
+

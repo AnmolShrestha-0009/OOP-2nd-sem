@@ -1,0 +1,58 @@
+Operator overloading is a core feature of compile-time polymorphism in C++ that allows you to redefine how standard operators work with user-defined types (like classes and structures). 
+
+
+The non overloaded operator are 
+Scope resolution (::)
+Member access (.)
+Member pointer selector (.*)
+Ternary conditional (?:)
+Size-of (sizeof)
+Type identification (typeid)
+
+
+
+General Syntax
+return_type operator symbol (argument_list) {
+    // implementation
+}
+
+
+
+ Overloading as a Member Function
+class Box {
+public:
+    double volume;
+
+    // Overloading the '+' operator
+    Box operator+(const Box& b) {
+        Box box;
+        box.volume = this->volume + b.volume;
+        return box;
+    }
+};
+
+
+
+Overloading as a Non-Member / Friend Function
+
+class Box {
+private:
+    double volume;
+
+public:
+    // Declare as a friend to access private members
+    friend std::ostream& operator<<(std::ostream& output, const Box& b);
+};
+
+// Implementation outside the class
+std::ostream& operator<<(std::ostream& output, const Box& b) {
+    output << "Box Volume: " << b.volume;
+    return output;
+}
+
+
+
+
+
+
+
